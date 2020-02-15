@@ -1,11 +1,87 @@
 {
-  "name": "server",
+  "name": "init-server-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "./src/index.ts",
+  "description": "starter kit for a node js express server with typescript, babel and webpack",
+  "main": "src/index.ts",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist-*",
+    "start": "nodemon --inspect ./src/index.ts",
+    "pretty:ts": "prettier ./src/*.ts ./src/**/*.ts ./src/**/**/*.ts --color --write",
+    "build:tsc": "tsc --build",
+    "build:babel": "NODE_ENV=production babel --config-file ./babel.config.js ./src --extensions .ts --out-dir ./dist-babel",
+    "build": "run-p -l build:*",
+    "lint": "eslint --config ./.eslintrc.js ./src/*.ts ./src/**/*.ts ./src/**/**/*.ts --fix --color"
   },
-  "author": "Ernesto Jara",
-  "license": "Apache-2.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnetoJara/init-server-template.git"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "EnetoJara",
+    "babel",
+    "webpack",
+    "server",
+    "express"
+  ],
+  "author": "Ernesto Jara Olveda",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/EnetoJara/init-server-template/issues"
+  },
+  "homepage": "https://github.com/EnetoJara/init-server-template#readme",
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.4",
+    "@babel/plugin-transform-modules-commonjs": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.8.3",
+    "@babel/preset-env": "7.8.4",
+    "@babel/preset-typescript": "7.8.3",
+    "@babel/register": "7.8.3",
+    "@types/body-parser": "1.19.0",
+    "@types/compression": "1.7.0",
+    "@types/cors": "2.8.6",
+    "@types/express": "4.17.2",
+    "@types/helmet": "0.0.45",
+    "@types/jsonwebtoken": "8.3.7",
+    "@types/node": "13.7.1",
+    "@types/passport": "1.0.2",
+    "@types/passport-google-oauth": "1.0.41",
+    "@types/pg": "7.14.1",
+    "@types/pg-types": "1.11.5",
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "@typescript-eslint/parser": "2.19.2",
+    "eslint": "6.8.0",
+    "eslint-config-jsdoc": "15.4.0",
+    "eslint-plugin-eslint-comments": "3.1.2",
+    "eslint-plugin-eslint-plugin": "2.2.1",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-jsdoc": "21.0.0",
+    "nodemon": "2.0.2",
+    "npm-run-all": "4.1.5",
+    "rimraf": "3.0.2",
+    "ts-node": "8.6.2",
+    "tslib": "1.10.0",
+    "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.8.4",
+    "body-parser": "1.19.0",
+    "compression": "1.7.4",
+    "core-js": "3.6.0",
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "helmet": "3.21.2",
+    "jsonwebtoken": "8.5.1",
+    "passport": "0.4.1",
+    "passport-google-oauth": "2.0.0",
+    "passport-google-oauth20": "2.0.0",
+    "pg": "7.18.1",
+    "pg-cursor": "2.1.5",
+    "winston": "3.2.1"
+  }
 }

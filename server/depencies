@@ -1,0 +1,1 @@
+npm i -D @types/body-parser @types/compression @types/cors @types/express @types/helmet @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-jsdoc eslint-plugin-eslint-comments eslint-plugin-eslint-plugin eslint-plugin-import eslint-plugin-jsdoc npm-run-all rimraf tslib typescript
