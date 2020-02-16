@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist-*",
-    "start": "nodemon --inspect ./src/index.ts",
-    "pretty:ts": "prettier ./src/*.ts ./src/**/*.ts ./src/**/**/*.ts --color --write",
+    "start": "./.env && nodemon --inspect ./src/index.ts",
+    "pretty": "prettier ./src/*.ts ./src/**/*.ts ./src/**/**/*.ts --color --write",
     "build:tsc": "tsc --build",
     "build:babel": "NODE_ENV=production babel --config-file ./babel.config.js ./src --extensions .ts --out-dir ./dist-babel",
     "build": "run-p -l build:*",
@@ -29,10 +29,6 @@
   ],
   "author": "Ernesto Jara Olveda",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/EnetoJara/init-server-template/issues"
-  },
-  "homepage": "https://github.com/EnetoJara/init-server-template#readme",
   "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "7.8.4",
@@ -41,6 +37,8 @@
     "@babel/preset-env": "7.8.4",
     "@babel/preset-typescript": "7.8.3",
     "@babel/register": "7.8.3",
+    "@types/bcrypt": "3.0.0",
+    "@types/bluebird": "3.5.29",
     "@types/body-parser": "1.19.0",
     "@types/compression": "1.7.0",
     "@types/cors": "2.8.6",
@@ -54,6 +52,9 @@
     "@types/pg-types": "1.11.5",
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
+    "dotenv": "8.2.0",
+    "dotenv-expand": "5.1.0",
+    "dotenv-extended": "2.7.1",
     "eslint": "6.8.0",
     "eslint-config-jsdoc": "15.4.0",
     "eslint-plugin-eslint-comments": "3.1.2",
@@ -62,6 +63,7 @@
     "eslint-plugin-jsdoc": "21.0.0",
     "nodemon": "2.0.2",
     "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
     "rimraf": "3.0.2",
     "ts-node": "8.6.2",
     "tslib": "1.10.0",
@@ -69,12 +71,13 @@
   },
   "dependencies": {
     "@babel/runtime": "7.8.4",
+    "bcrypt": "3.0.8",
     "body-parser": "1.19.0",
     "compression": "1.7.4",
     "core-js": "3.6.0",
     "cors": "2.8.5",
-    "dotenv": "8.2.0",
     "express": "4.17.1",
+    "googleapis": "47.0.0",
     "helmet": "3.21.2",
     "jsonwebtoken": "8.5.1",
     "passport": "0.4.1",
@@ -82,6 +85,9 @@
     "passport-google-oauth20": "2.0.0",
     "pg": "7.18.1",
     "pg-cursor": "2.1.5",
+    "pg-hstore": "2.3.3",
+    "sequelize": "5.21.4",
+    "validator": "12.2.0",
     "winston": "3.2.1"
   }
 }

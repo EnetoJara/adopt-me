@@ -8,12 +8,17 @@ import { logger } from "./logger";
  * @param {string} [env='production'] - the environment production by default.
  * @returns {string} if true returns positive else negative.
  */
-export function is (running: string, positive: string, negative: string, env = "production"): string {
-    return env === running ? positive : negative;
+export function is(
+  running: string,
+  positive: string,
+  negative: string,
+  env = "production"
+): string {
+  return env === running ? positive : negative;
 }
 
-export function logError (err) {
-    for (const i of Object.keys(err)) {
-        logger.error(err[i]);
-    }
+export function logError(err) {
+  for (const i of Object.keys(err)) {
+    logger.error(err[i]);
+  }
 }

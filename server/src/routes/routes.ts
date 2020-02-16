@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ROUTE_LOGIN } from "../utils/constants";
+import { ADDRESS, BDAY, CONTACTS, EMAIL, LOGIN, PHONES, PROFILE, ROUTE_GOOGLE_AUTH, ROUTE_GOOGLE_CALLBACK } from "../utils/constants";
 import { google } from "../utils/passport";
 
 /**
@@ -7,15 +7,30 @@ import { google } from "../utils/passport";
  *
  * @returns {Router} api - Defines all the endpoints of our app.
  */
-export function routes (): Router {
-    const api: Router = Router ();
+export function routes(): Router {
+  const api: Router = Router();
 
-    api.route(ROUTE_LOGIN).post();
-
-    api.get("/auth/google", google.authenticate("google",  { scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/user.phonenumbers.read', 'https://www.googleapis.com/auth/user.addresses.read', 'https://www.googleapis.com/auth/user.birthday.read','https://www.googleapis.com/auth/contacts.readonly'] }));
-    api.get("/auth/google/callback", google.authenticate('google', { failureRedirect: '/login' }),
+  api.get(
+    ROUTE_GOOGLE_AUTH,
+    google.authenticate("google", {
+      scope: [
+        LOGIN,
+        PROFILE,
+        EMAIL,
+        PHONES,
+        ADDRESS,
+        BDAY,
+        CONTACTS
+      ]
+    })
+  );
+  api.get(
+    ROUTE_GOOGLE_CALLBACK,
+    google.authenticate("google", { failureRedirect: "/login" }),
     function(req, res) {
-      res.redirect('/');
-    });
-    return api;
+      console.log('res: ', res);
+      res.redirect("/");
+    }
+  );
+  return api;
 }
